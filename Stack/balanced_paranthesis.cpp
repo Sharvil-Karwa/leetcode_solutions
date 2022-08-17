@@ -1,7 +1,3 @@
-#include <iostream>
-#include<stack>
-#include<math.h>
-using namespace std;
 
 bool balancedParanthesis(string s){
 
@@ -36,7 +32,3 @@ bool balancedParanthesis(string s){
     return false;
 }
 
-int main()
-{
-    cout<<balancedParanthesis("[({})]");
-}

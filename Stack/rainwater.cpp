@@ -1,6 +1,3 @@
-#include "bits/stdc++.h"
-using namespace std;
-
 int rain_water(vector<int> a){
     stack<int> st;
     int n = a.size();

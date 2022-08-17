@@ -1,6 +1,3 @@
-#include<iostream>
-#include<vector>
-using namespace std;
 
 class Solution {
 public:
@@ -31,11 +28,3 @@ public:
     } 
 }; 
 
-int main(){
-    vector<vector<char>> grid = {{'1','1','0','0','0'},
-                                 {'1','1','0','0','0'},
-                                 {'0','0','1','0','0'},
-                                 {'0','0','0','1','1'}};
-    Solution s;
-    cout<<s.numIslands(grid); 
-}
