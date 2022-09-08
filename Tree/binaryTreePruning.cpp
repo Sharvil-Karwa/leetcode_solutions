@@ -2,7 +2,6 @@ class Solution {
 public:
     TreeNode* pruneTree(TreeNode* root) {
         if(root==nullptr) return nullptr;
-        
         if(!func(root)) return nullptr;
         return root;
     }
