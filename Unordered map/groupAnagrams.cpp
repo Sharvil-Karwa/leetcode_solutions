@@ -13,24 +13,15 @@ public:
             return ans;
         }
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<string> copy = strs;
-        for(int i=0;i<copy.size();i++){
-            copy[i] = sortString(copy[i]);
+        unordered_map<string,vector<string>> mp;
+        for (int i=0;i<strs.size();i++){
+            string s = sortString(strs[i]);
+            mp[s].push_back(strs[i]);
         }
         vector<vector<string>> ans;
-        for(int i=0;i<copy.size();i++){
-            vector<string> temp;
-            temp.push_back(strs[i]);
-            for(int j=i+1;j<copy.size();j++){
-                if(copy[i]==copy[j]){
-                    temp.push_back(strs[j]);
-                    copy.erase(copy.begin()+j);
-                    strs.erase(strs.begin()+j);
-                    j--;
-                }
-            }
-            ans.push_back(temp);
-        } 
+        for (auto i:mp){
+            ans.push_back(i.second);
+        }
         return ans;
     }
 };
