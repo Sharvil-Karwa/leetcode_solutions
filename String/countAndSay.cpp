@@ -19,7 +19,6 @@ public:
     int k = 0;
 
     string countAndSay(int n) {
-        if(n==1) return "1";
         while(k<n-1){
             ans2 = say(ans2);
             k+=1;
