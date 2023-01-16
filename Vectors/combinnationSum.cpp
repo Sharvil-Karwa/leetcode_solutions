@@ -1,25 +1,27 @@
 class Solution {
 public:
-    
-    void findCombination(int ind,int target, vector<int> &arr, vector<vector<int>> &ans, vector<int> ds){
-        if(ind==arr.size()){
-            if(target==0){
-            ans.push_back(ds);
-            }
+
+    vector<vector<int>> ans;
+
+    void func(vector<int> arr, int target, vector<int> temp){
+        if(target==0){
+            ans.push_back(temp);
             return;
         }
-        if(arr[ind]<=target){
-            ds.push_back(arr[ind]);
-            findCombination(ind,target-arr[ind],arr,ans,ds);
-            ds.pop_back();
-        }
-        findCombination(ind+1,target,arr,ans,ds);
+        if(target<0) return;
+        if(arr.size()==0) return;
+        temp.push_back(arr[0]);
+        func(arr,target-arr[0],temp);
+        temp.pop_back();
+        arr.erase(arr.begin());
+        func(arr,target,temp);
     }
-    
+
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>> ans;
-        vector<int> ds;
-        findCombination(0,target,candidates,ans,ds);
+        set<int> s(candidates.begin(),candidates.end());
+        vector<int> arr(s.begin(),s.end());
+        sort(arr.begin(),arr.end());
+        func(arr,target,{});
         return ans;
     }
 };
