@@ -1,5 +1,3 @@
-// 4 sum problem with long long
-
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& arr, int target) {
@@ -12,7 +10,7 @@ public:
                 int l = j+1;
                 int r = n-1;
                 while(l<r){
-                    if(arr[l]+arr[r]==target-x){
+                    if(arr[l]+arr[r]==(long)target-(long)x){
                         vector<int> temp(4);
                         temp[0] = arr[i];
                         temp[1] = arr[j];
@@ -23,7 +21,7 @@ public:
                         sort(temp.begin(),temp.end());
                         ans.insert(temp);
                     }
-                    else if(arr[l]+arr[r]<target-x) l++;
+                    else if(arr[l]+arr[r]<(long)target-(long)x) l++;
                     else r--;
                 }
             }

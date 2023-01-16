@@ -1,35 +1,20 @@
 class Solution {
 public:
-    void insertAtTail(ListNode* &head, int val)
-    {
-        ListNode* n = new ListNode(val);
-        if(head==NULL){
-            head=n;
-            return;
-        }
-        ListNode* temp=head;
-        while(temp->next!=NULL){
-            temp=temp->next;
-        }
-        temp->next=n;
-    }
-    
     ListNode* rotateRight(ListNode* head, int k) {
-        ListNode* temp = head; 
-        vector<int> arr;
-        while(temp!=NULL){
-            arr.push_back(temp->val);
-            temp = temp->next;
-        } 
-        int arr2[arr.size()];
-        for(int i=0;i<arr.size();i++){
-            int newPosition = (i+k)%arr.size();
-            arr2[newPosition] = arr[i];
-        } 
-        ListNode* headd = NULL;
-        for(auto i: arr2){
-            insertAtTail(headd,i);
-        } 
-        return headd;
+        vector<ListNode*> v;
+        while(head){
+            v.push_back(head);
+            head = head->next;
+        }
+        int c = 0;
+        vector<ListNode*> v1;
+        while(c!=k){
+            v1.push_back(v[v.size()-1]);
+            v.pop_back();
+            c++;
+        }
+        for(int i=v1.size()-1;i>=0;i--){
+            v.insert(v.begin(),v1[i]);
+        }
     }
 };
