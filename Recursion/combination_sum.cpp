@@ -1,23 +1,27 @@
 class Solution {
 public:
 
-    void func(set<vector<int>> &ans, vector<int> temp, int i, vector<int>& nums){
-        if(i==nums.size()){
-            ans.insert(temp);
+    void func(set<vector<int>> &s, vector<int> temp, int i, int target,vector<int>& arr){
+        if(target==0){
+            s.insert(temp);
             return;
         } 
-        if(i>nums.size()) return;
-        temp.push_back(nums[i]);
-        func(ans, temp, i+1, nums);
+        if(target<0) return;
+        if(i==arr.size()) return;
+        target-=arr[i];
+        temp.push_back(arr[i]);
+        func(s,temp,i,target,arr);
+        func(s,temp,i+1,target,arr);
         temp.pop_back();
-        func(ans, temp, i+1, nums);
+        target+=arr[i];
+        func(s,temp,i+1,target,arr);
     }
 
-    vector<vector<int>> subsets(vector<int>& nums) {
-        set<vector<int>> ans;
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        set<vector<int>> s;
         vector<int> temp;
-        func(ans,temp,0,nums);
-        vector<vector<int>> ans2(ans.begin(),ans.end());
-        return ans2;
+        func(s,temp,0,target,candidates);
+        vector<vector<int>> ans(s.begin(),s.end());
+        return ans;
     }
 };
