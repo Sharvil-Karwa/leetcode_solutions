@@ -2,7 +2,7 @@ class MyHashMap {
 public:
 
     vector<int> values;
-    vector<int> keys;
+    vector<int> keyValue;
 
     MyHashMap() {
         
@@ -10,23 +10,23 @@ public:
     
     void put(int key, int value) { 
         bool found = false;
-        for(int i=0;i<keys.size();i++){
-            if(keys[i]==key){
+        for(int i=0;i<keyValue.size();i++){
+            if(keyValue[i]==key){
                 values[i] = value;
                 found = true;
                 break;
             }
         } 
         if(!found){
-            keys.push_back(key);
+            keyValue.push_back(key);
             values.push_back(value);
         }
     }
     
     int get(int key) {
         int value = -1;
-        for(int i=0;i<keys.size();i++){
-            if(keys[i]==key){
+        for(int i=0;i<keyValue.size();i++){
+            if(keyValue[i]==key){
                 value = values[i];
                 break;
             }
@@ -35,9 +35,9 @@ public:
     }
     
     void remove(int key) {
-        for(int i=0;i<keys.size();i++){
-            if(keys[i]==key){
-                keys.erase(keys.begin()+i);
+        for(int i=0;i<keyValue.size();i++){
+            if(keyValue[i]==key){
+                keyValue.erase(keyValue.begin()+i);
                 values.erase(values.begin()+i);
                 break;
             }
